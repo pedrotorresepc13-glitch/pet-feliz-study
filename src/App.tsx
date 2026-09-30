@@ -4,8 +4,8 @@ import {modules,decisions,references,type Question} from './data'
 
 type Screen='home'|'module'|'simulation'|'review'|'exam'|'references'
 type Metrics={estrategia:number;cliente:number;marca:number;operacao:number;financas:number}
-type Stored={completed:string[];scores:Record<string,number>;errors:string[];seen:Record<string,number>;decisions:Record<string,number>;metrics:Metrics;streak:number;lastStudy?:string;examBest:number}
-const initial:Stored={completed:[],scores:{},errors:[],seen:{},decisions:{},metrics:{estrategia:50,cliente:50,marca:50,operacao:50,financas:50},streak:0,examBest:0}
+type Stored={completed:string[];scores:Record<string,number>;errors:string[];seen:Record<string,number>;strength:Record<string,number>;due:Record<string,number>;decisions:Record<string,number>;metrics:Metrics;streak:number;lastStudy?:string;examBest:number}
+const initial:Stored={completed:[],scores:{},errors:[],seen:{},strength:{},due:{},decisions:{},metrics:{estrategia:50,cliente:50,marca:50,operacao:50,financas:50},streak:0,examBest:0}
 
 const load=():Stored=>{try{return {...initial,...JSON.parse(localStorage.getItem('pet-feliz-study-v1')||'{}')}}catch{return initial}}
 const clamp=(n:number)=>Math.max(0,Math.min(100,n))
@@ -34,11 +34,12 @@ export default function App(){
  const reviewQuestions=useMemo(()=>{
    const ids=new Set(state.errors)
    const wrong=allQuestions.filter(q=>ids.has(q.id))
-   const old=allQuestions.filter(q=>(state.seen[q.id]||0)>0&&!ids.has(q.id))
-   return [...wrong,...shuffle(old).slice(0,Math.max(0,8-wrong.length))]
- },[state.errors,state.seen,allQuestions])
+   const now=Date.now()
+   const due=allQuestions.filter(q=>(state.seen[q.id]||0)>0&&!ids.has(q.id)&&(state.due[q.id]||0)<=now)
+   return [...wrong,...shuffle(due).slice(0,Math.max(0,8-wrong.length))]
+ },[state.errors,state.seen,state.due,allQuestions])
 
- const markQuestion=(q:Question,correct:boolean)=>setState(s=>({...s,errors:correct?s.errors.filter(id=>id!==q.id):Array.from(new Set([...s.errors,q.id])),seen:{...s.seen,[q.id]:(s.seen[q.id]||0)+1}}))
+ const markQuestion=(q:Question,correct:boolean)=>setState(s=>{const current=s.strength[q.id]||0;const nextStrength=correct?Math.min(current+1,4):0;const days=[0,1,3,7,14][nextStrength];return {...s,errors:correct?s.errors.filter(id=>id!==q.id):Array.from(new Set([...s.errors,q.id])),seen:{...s.seen,[q.id]:(s.seen[q.id]||0)+1},strength:{...s.strength,[q.id]:nextStrength},due:{...s.due,[q.id]:correct?Date.now()+days*86400000:Date.now()}}})
  const openModule=(id:string)=>{setActiveId(id);setQuizIndex(0);setQuizCorrect(0);setSelected(null);setAnswered(false);setScreen('module')}
  const finishModule=()=>{
    const score=Math.round(quizCorrect/active.questions.length*100)
