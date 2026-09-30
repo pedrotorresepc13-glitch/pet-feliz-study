@@ -73,7 +73,7 @@ export default function App(){
    {screen==='review'&&<ReviewScreen questions={reviewQuestions} state={state} markQuestion={markQuestion}/>}
    {screen==='exam'&&<ExamScreen questions={examQuestions} index={examIndex} score={examScore} done={examDone} best={state.examBest} selected={selected} answered={answered} setSelected={setSelected}
      answer={()=>{if(selected===null||answered)return;const q=examQuestions[examIndex];const ok=selected===q.answer;setAnswered(true);if(ok)setExamScore(x=>x+1);markQuestion(q,ok)}}
-     next={()=>{if(examIndex<examQuestions.length-1){setExamIndex(x=>x+1);setSelected(null);setAnswered(false)}else{const final=examScore+(selected===examQuestions[examIndex]?.answer?1:0);const pct=Math.round(final/examQuestions.length*100);setState(s=>({...s,examBest:Math.max(s.examBest,pct)}));setExamDone(true)}}} restart={startExam}/>}
+     next={()=>{if(examIndex<examQuestions.length-1){setExamIndex(x=>x+1);setSelected(null);setAnswered(false)}else{const final=examScore;const pct=Math.round(final/examQuestions.length*100);setState(s=>({...s,examBest:Math.max(s.examBest,pct)}));setExamDone(true)}}} restart={startExam}/>}
    {screen==='references'&&<References reset={reset}/>}
   </main>
  </div>
