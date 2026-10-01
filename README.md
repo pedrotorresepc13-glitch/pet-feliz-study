@@ -8,10 +8,11 @@ Transformar o material acadêmico do PET FELIZ em uma experiência de aprendizag
 
 ## O que já está implementado
 
-- 12 módulos progressivos
-- Conteúdo ampliado a partir do caso PET FELIZ
+- 12 módulos progressivos com **36 aulas guiadas**
+- Matéria antes das perguntas: explicações, exemplos, listas de conceitos e diagramas visuais
+- Conteúdo explicitamente marcado como **“Do material PET FELIZ”** ou **“Aprofundamento”**
 - Metas de domínio por módulo
-- 24 questões conceituais e aplicadas
+- 36 questões conceituais e aplicadas
 - Feedback explicativo imediato
 - Fila de revisão de erros
 - Recuperação ativa e mistura de conceitos antigos
@@ -52,7 +53,7 @@ Os módulos adicionais expandem o estudo com segmentação, posicionamento, 4 Ps
 
 ## Metodologia de aprendizagem
 
-A interface foi desenhada em torno de três princípios:
+A interface foi desenhada para uma sequência simples: **estudar → visualizar → entender → responder → aplicar → revisar**. A metodologia usa três princípios:
 
 1. **Recuperação ativa** — tentar lembrar e responder antes de reler.
 2. **Prática distribuída** — erros e conceitos antigos retornam em revisões.
