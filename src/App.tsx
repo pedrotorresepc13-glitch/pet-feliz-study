@@ -166,7 +166,7 @@ export default function App(){
           if(quizIndex<active.questions.length-1){setQuizIndex(x=>x+1);setSelected(null);setAnswered(false)}
           else finishModule()
         }}
-        review={()=>{setQuizMode(false);setLessonIndex(0)}
+        review={()=>{setQuizMode(false);setLessonIndex(0)}}
       />}
       {screen==='simulation'&&<SimulationScreen moduleId={active.id} state={state} choose={chooseDecision} done={()=>setScreen('home')} prosperity={prosperity}/>}
       {screen==='review'&&<ReviewScreen questions={reviewQuestions} state={state} markQuestion={markQuestion}/>}
@@ -181,7 +181,8 @@ export default function App(){
         next={()=>{
           if(examIndex<examQuestions.length-1){setExamIndex(x=>x+1);setSelected(null);setAnswered(false)}
           else{
-            const pct=Math.round(examScore/examQuestions.length*100)
+            const finalScore=examScore+(selected===examQuestions[examIndex]?.answer?1:0)
+            const pct=Math.round(finalScore/examQuestions.length*100)
             setState(s=>({...s,examBest:Math.max(s.examBest,pct)}));setExamDone(true)
           }
         }}
