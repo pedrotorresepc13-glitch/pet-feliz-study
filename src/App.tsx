@@ -1,4 +1,4 @@
-import {useEffect,useMemo,useState,type ReactNode} from 'react'
+import {useEffect,useMemo,useState,type CSSProperties,type ReactNode} from 'react'
 import {
   ArrowLeft,ArrowRight,BookOpen,Brain,BriefcaseBusiness,Building2,CheckCircle2,
   ChevronRight,CircleAlert,Compass,GraduationCap,Home,Layers3,Lightbulb,
@@ -218,7 +218,7 @@ function HomeScreen({state,progress,prosperity,nextModule,openModule,startExam}:
       </div>
       <div className="business-health">
         <span className="mini-label">PET FELIZ AGORA</span>
-        <div className="health-ring" style={{'--score':prosperity} as React.CSSProperties}><div><strong>{prosperity}</strong><small>/100</small></div></div>
+        <div className="health-ring" style={{'--score':prosperity} as CSSProperties}><div><strong>{prosperity}</strong><small>/100</small></div></div>
         <h3>{prosperity>=80?'Negócio muito sólido':prosperity>=65?'Em crescimento':prosperity>=50?'Em construção':'Precisa de correções'}</h3>
         <p>Suas decisões de estudo alteram estratégia, cliente, marca, operação e finanças.</p>
       </div>
