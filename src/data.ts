@@ -614,6 +614,31 @@ export const decisions:Decision[]=[
  {label:'Reler tudo passivamente',rationale:'Aumenta familiaridade, mas testa pouco a recuperação.',impact:{estrategia:1},quality:'ok'},
  {label:'Responder questões, revisar erros e comparar conceitos confundíveis',rationale:'Revela lacunas e fortalece recuperação.',impact:{estrategia:10},quality:'best'},
  {label:'Estudar somente o último assunto visto',rationale:'Ignora integração e retenção de conteúdos anteriores.',impact:{estrategia:-7},quality:'bad'}]}
+,{id:'d13',moduleId:'modelo',situation:'Os sócios querem lançar um plano mensal de creche.',question:'Qual análise deve vir antes do lançamento?',options:[
+ {label:'Definir proposta, capacidade, custos, regras e teste-piloto',rationale:'Conecta valor, operação e viabilidade antes de escalar.',impact:{estrategia:8,operacao:8,financas:6,cliente:5},quality:'best'},
+ {label:'Copiar o plano mais barato da concorrência',rationale:'Preço isolado não valida proposta nem capacidade.',impact:{marca:-5,financas:-4},quality:'ok'},
+ {label:'Vender sem limite para criar demanda',rationale:'Pode gerar sobrecarga e quebra de confiança.',impact:{operacao:-10,marca:-7,cliente:-7},quality:'bad'}]},
+{id:'d14',moduleId:'precificacao',situation:'Um serviço tem muita procura, mas quase não sobra caixa.',question:'Qual é a melhor primeira análise?',options:[
+ {label:'Aumentar volume sem rever nada',rationale:'Pode ampliar um problema de margem.',impact:{financas:-8},quality:'bad'},
+ {label:'Calcular custos variáveis, margem, preço e capacidade',rationale:'Revela se o serviço realmente contribui para a estrutura.',impact:{financas:10,estrategia:6},quality:'best'},
+ {label:'Dar desconto para fidelizar todos',rationale:'Desconto pode reduzir ainda mais a contribuição.',impact:{financas:-6,cliente:2},quality:'ok'}]},
+{id:'d15',moduleId:'pessoas',situation:'A equipe cresceu rapidamente e cada pessoa executa o atendimento de um jeito.',question:'Qual ação cria consistência?',options:[
+ {label:'Definir responsabilidades, treinar padrões e acompanhar feedback',rationale:'Transforma a estratégia em comportamento observável.',impact:{operacao:9,marca:7,cliente:7},quality:'best'},
+ {label:'Deixar cada um decidir sem orientação',rationale:'Aumenta variabilidade e risco.',impact:{operacao:-8,marca:-6},quality:'bad'},
+ {label:'Trocar todos os funcionários',rationale:'Não corrige processos nem necessariamente resolve a causa.',impact:{financas:-5,operacao:-2},quality:'ok'}]},
+{id:'d16',moduleId:'etica',situation:'Uma venda extra exige ultrapassar a capacidade segura de hospedagem.',question:'Qual decisão preserva o negócio?',options:[
+ {label:'Aceitar e esconder a lotação',rationale:'Coloca bem-estar, equipe e confiança em risco.',impact:{operacao:-12,marca:-12,cliente:-10},quality:'bad'},
+ {label:'Recusar ou reagendar com transparência e oferecer alternativa segura',rationale:'Protege responsabilidade e relacionamento de longo prazo.',impact:{marca:9,cliente:8,operacao:10},quality:'best'},
+ {label:'Aceitar reduzindo supervisão',rationale:'Economiza no curto prazo e aumenta risco.',impact:{financas:2,operacao:-9},quality:'ok'}]},
+{id:'d17',moduleId:'indicadores',situation:'O faturamento subiu, mas as reclamações e atrasos também.',question:'Como interpretar o painel?',options:[
+ {label:'Comemorar apenas o faturamento',rationale:'Uma métrica positiva pode esconder deterioração.',impact:{estrategia:-7,cliente:-7,operacao:-6},quality:'bad'},
+ {label:'Cruzar indicadores, investigar causa e ajustar capacidade ou processo',rationale:'Usa o painel para corrigir o sistema.',impact:{estrategia:9,cliente:8,operacao:9},quality:'best'},
+ {label:'Ignorar reclamações até o próximo ano',rationale:'Adia uma correção necessária.',impact:{marca:-6,cliente:-6},quality:'ok'}]},
+{id:'d18',moduleId:'laboratorio',situation:'A prova apresenta um caso com crescimento, reclamações e caixa apertado.',question:'Qual resposta demonstra visão integrada?',options:[
+ {label:'Escolher apenas a ação que aumenta vendas',rationale:'Ignora operação, cliente e margem.',impact:{financas:-4,operacao:-7,cliente:-6},quality:'bad'},
+ {label:'Definir o problema, usar evidências, comparar impactos e propor controle',rationale:'Integra conceito, caso, decisão e acompanhamento.',impact:{estrategia:10,financas:7,operacao:7,cliente:7},quality:'best'},
+ {label:'Responder com uma definição decorada',rationale:'Não aplica o conhecimento ao caso.',impact:{estrategia:-5},quality:'ok'}]}
+
 ]
 
 export const references=[
