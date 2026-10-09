@@ -8,11 +8,11 @@ Transformar o material acadêmico do PET FELIZ em uma experiência de aprendizag
 
 ## O que já está implementado
 
-- 12 módulos progressivos com **36 aulas guiadas**
+- 18 módulos progressivos com **54 aulas guiadas** e laboratório integrado
 - Matéria antes das perguntas: explicações, exemplos, listas de conceitos e diagramas visuais
 - Conteúdo explicitamente marcado como **“Do material PET FELIZ”** ou **“Aprofundamento”**
 - Metas de domínio por módulo
-- 36 questões conceituais e aplicadas
+- 54 questões conceituais e aplicadas, com decisões gerenciais por módulo
 - Feedback explicativo imediato
 - Fila de revisão de erros
 - Recuperação ativa e mistura de conceitos antigos
@@ -24,7 +24,7 @@ Transformar o material acadêmico do PET FELIZ em uma experiência de aprendizag
   - operação
   - finanças
 - Índice geral de prosperidade
-- Simulado aleatório de 20 questões
+- Simulado aleatório de 24 questões
 - Melhor nota registrada
 - Persistência de progresso com localStorage
 - Interface responsiva para desktop e celular
@@ -49,11 +49,11 @@ O projeto preserva os principais dados do documento fornecido para estudo:
 - rentabilidade: 70,99% ao ano
 - retorno: 1,4 anos
 
-Os módulos adicionais expandem o estudo com segmentação, posicionamento, 4 Ps, jornada, capacidade operacional, governança, SWOT, cenários, riscos e integração estratégica.
+Os módulos adicionais expandem o estudo com segmentação, posicionamento, 4 Ps, jornada, capacidade operacional, governança, SWOT, cenários, riscos, Canvas, precificação, margem de contribuição, ponto de equilíbrio, liderança, ética, bem-estar animal, sustentabilidade, privacidade, indicadores, metas e um laboratório de casos discursivos.
 
 ## Metodologia de aprendizagem
 
-A interface foi desenhada para uma sequência simples: **estudar → visualizar → entender → responder → aplicar → revisar**. A metodologia usa três princípios:
+A interface foi desenhada para funcionar como um professor: **estudar → visualizar → entender → responder → receber feedback → aplicar → revisar → integrar**. O conteúdo começa com a matéria do caso PET FELIZ, amplia os conceitos com aprofundamento e termina em situações que exigem justificativa, comparação e decisão. A metodologia usa três princípios:
 
 1. **Recuperação ativa** — tentar lembrar e responder antes de reler.
 2. **Prática distribuída** — erros e conceitos antigos retornam em revisões.
