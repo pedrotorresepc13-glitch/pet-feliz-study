@@ -183,6 +183,7 @@ export default function App(){
           else{
             const finalScore=examScore+(selected===examQuestions[examIndex]?.answer?1:0)
             const pct=Math.round(finalScore/examQuestions.length*100)
+            setExamScore(finalScore)
             setState(s=>({...s,examBest:Math.max(s.examBest,pct)}));setExamDone(true)
           }
         }}
@@ -337,7 +338,7 @@ function QuizScreen({module,quizIndex,quizCorrect,selected,answered,setSelected,
   const question=module.questions[quizIndex]
   return <div className="assessment-page">
     <div className="assessment-head">
-      <div><span className="eyebrow">VERIFICAÇÃO DE APRENDIZAGEM</span><h1>Agora prove que entendeu.</h1><p>Não é um jogo de memória: use os conceitos estudados para justificar mentalmente cada resposta.</p></div>
+      <div><span className="eyebrow">VERIFICAÇÃO DE APRENDIZAGEM</span><h1>Agora prove que entendeu.</h1><p>Seu professor está verificando se você consegue explicar a decisão: use os conceitos estudados e justifique mentalmente cada resposta.</p></div>
       <div className="assessment-score"><span>ACERTOS</span><strong>{quizCorrect}/{module.questions.length}</strong></div>
     </div>
     <div className="exam-progress"><i style={{width:((quizIndex+1)/module.questions.length*100)+'%'}}/></div>
