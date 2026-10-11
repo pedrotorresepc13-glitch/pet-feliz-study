@@ -9,6 +9,11 @@ Transformar o material acadêmico do PET FELIZ em uma experiência de aprendizag
 ## O que já está implementado
 
 - 18 módulos progressivos com **54 aulas guiadas** e laboratório integrado
+- Dossiê do caso PET FELIZ com os dados essenciais para revisão rápida
+- Plano intensivo de **30 horas** para transformar resumo em domínio de prova
+- Camada “como o professor pode cobrar” em cada módulo
+- Fórmula de resposta discursiva: conceito, evidência, impacto, recomendação e controle
+- Erros comuns por módulo, para evitar confusões típicas de prova
 - Matéria antes das perguntas: explicações, exemplos, listas de conceitos e diagramas visuais
 - Conteúdo explicitamente marcado como **“Do material PET FELIZ”** ou **“Aprofundamento”**
 - Metas de domínio por módulo
@@ -58,6 +63,8 @@ A interface foi desenhada para funcionar como um professor: **estudar → visual
 1. **Recuperação ativa** — tentar lembrar e responder antes de reler.
 2. **Prática distribuída** — erros e conceitos antigos retornam em revisões.
 3. **Interleaving** — conceitos semelhantes são misturados para treinar discriminação.
+
+Além disso, a versão atual usa estudo por caso. Cada módulo orienta o aluno a transformar teoria em uma resposta aplicada ao PET FELIZ, sempre separando dados originais do material, aprofundamentos conceituais, armadilhas de prova e decisões gerenciais.
 
 Referências acadêmicas e gerenciais estão disponíveis dentro da própria aplicação.
 

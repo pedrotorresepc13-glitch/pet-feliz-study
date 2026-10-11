@@ -41,7 +41,66 @@ export type Decision={
   }[]
 }
 
+export type CaseDossierItem={
+  title:string
+  value:string
+  note:string
+}
+
+export type StudyPlanBlock={
+  title:string
+  time:string
+  focus:string
+  deliverable:string
+}
+
+export type ModuleCoaching={
+  moduleId:string
+  examAngles:string[]
+  answerFormula:string
+  commonTraps:string[]
+  practicePrompt:string
+}
+
 const q=(id:string,moduleId:string,prompt:string,options:string[],answer:number,explanation:string):Question=>({id,moduleId,prompt,options,answer,explanation})
+
+export const caseDossier:CaseDossierItem[]=[
+ {title:'Negócio',value:'PET FELIZ em Feliz/RS',note:'Pet shop com produtos e serviços para cães e gatos, usando o caso como laboratório de plano de negócios.'},
+ {title:'Sociedade',value:'LTDA · Flávio 50% · Ana 50%',note:'Ana aparece como administradora; decisões relevantes dependem de governança entre os sócios.'},
+ {title:'Cliente',value:'Tutores preocupados com saúde e cuidado',note:'O caso aponta alimentação saudável, conveniência, hospedagem, creche, dog walker, pet sitter e adestramento.'},
+ {title:'Mercado',value:'Crescimento informado de 30% a 35% a.a.',note:'É oportunidade contextual, não garantia automática de resultado do PET FELIZ.'},
+ {title:'Investimento',value:'R$ 194.750,00 · 100% próprios',note:'Os recursos próprios reduzem dependência financeira externa, mas aumentam responsabilidade sobre retorno.'},
+ {title:'Viabilidade',value:'Lucratividade 9,51% · Rentabilidade 70,99% a.a. · Payback 1,4 anos',note:'Indicadores fortes no material, desde que premissas de demanda, custo e operação se sustentem.'}
+]
+
+export const studyIntensivePlan:StudyPlanBlock[]=[
+ {title:'1. Entender o caso',time:'4h',focus:'Ler dossiê, missão, visão, valores, cliente, mercado e números sem misturar fato com hipótese.',deliverable:'Mapa do caso em uma página.'},
+ {title:'2. Dominar conceitos',time:'8h',focus:'Plano de negócios, segmentação, Porter, proposta de valor, 4 Ps, operação, finanças, SWOT e Canvas.',deliverable:'Glossário comparativo dos conceitos que mais confundem.'},
+ {title:'3. Aplicar no PET FELIZ',time:'8h',focus:'Responder cada conceito usando evidências do caso e consequências gerenciais.',deliverable:'18 respostas discursivas curtas, uma por módulo.'},
+ {title:'4. Simular prova',time:'6h',focus:'Fazer questões misturadas, revisar erros e treinar justificativa antes de olhar resposta.',deliverable:'Lista dos erros recorrentes e correção explicada.'},
+ {title:'5. Revisão final',time:'4h',focus:'Revisar números, diferenças conceituais, riscos e cadeias de causa e efeito.',deliverable:'Resposta modelo: conceito, evidência, impacto, recomendação e controle.'}
+]
+
+export const moduleCoaching:ModuleCoaching[]=[
+ {moduleId:'fundamentos',examAngles:['Função do plano de negócios','Diferença entre fato, hipótese e decisão','Por que planejamento reduz incerteza sem eliminar risco'],answerFormula:'Defina plano de negócios como ferramenta de decisão, cite o PET FELIZ e feche mostrando como ele conecta mercado, operação e finanças.',commonTraps:['Dizer que plano garante lucro','Tratar crescimento de mercado como certeza','Responder só com definição decorada'],practicePrompt:'Explique por que abrir rapidamente apenas porque o mercado cresce pode ser uma decisão frágil.'},
+ {moduleId:'identidade',examAngles:['Missão x visão x valores','Como identidade vira critério de decisão','Valores transformados em processo'],answerFormula:'Separe presente, futuro e comportamento; depois mostre uma decisão operacional coerente com atendimento personalizado e segurança.',commonTraps:['Confundir missão com visão','Usar valores como frases bonitas','Ignorar que valor precisa virar rotina'],practicePrompt:'Mostre como o valor “higiene” pode aparecer em treinamento, checklist e indicador.'},
+ {moduleId:'clientes',examAngles:['Público-alvo, segmento e persona','Necessidade funcional e emocional','Valor percebido pelo tutor'],answerFormula:'Comece pelo tutor descrito no caso, identifique dor concreta e conecte serviço a benefício percebido.',commonTraps:['Dizer que o público é todo mundo que tem pet','Confundir serviço com benefício','Ignorar gasto médio e conveniência'],practicePrompt:'Escolha um serviço do PET FELIZ e explique a dor, o benefício e a prova de confiança.'},
+ {moduleId:'mercado',examAngles:['Oportunidade x garantia','Critérios de comparação com concorrentes','Papel estratégico dos fornecedores'],answerFormula:'Use o crescimento como contexto, compare alternativas pelo olhar do cliente e mostre como fornecedor afeta qualidade, custo e prazo.',commonTraps:['Listar concorrentes sem análise','Achar que fornecedor é só preço','Confundir mercado crescente com viabilidade'],practicePrompt:'Monte uma comparação curta entre PET FELIZ e concorrentes usando cinco critérios de escolha do tutor.'},
+ {moduleId:'porter',examAngles:['Cinco forças','Diferença entre concorrente direto e substituto','Pressões sobre margem e demanda'],answerFormula:'Nomeie a força, aplique ao caso e explique qual decisão estratégica ela sugere.',commonTraps:['Chamar todo competidor de concorrente direto','Esquecer compradores e fornecedores','Usar Porter como lista sem consequência'],practicePrompt:'Analise um aplicativo de cuidadores como substituto e proponha uma resposta estratégica.'},
+ {moduleId:'valor',examAngles:['Valor percebido','Diferenciação sustentável','Equilíbrio entre benefício, preço e custo'],answerFormula:'Mostre o benefício para o tutor, o custo/capacidade para a empresa e a condição para o diferencial ser sustentável.',commonTraps:['Achar que mais serviços sempre é melhor','Ignorar custo de entregar','Confundir diferencial com enfeite'],practicePrompt:'Defenda quais serviços deveriam ser priorizados no lançamento e por quê.'},
+ {moduleId:'marketing',examAngles:['Posicionamento','4 Ps','Jornada e fidelização'],answerFormula:'Declare a percepção desejada, alinhe produto/preço/praça/promoção e mostre como a experiência sustenta recompra.',commonTraps:['Reduzir marketing a propaganda','Prometer preço baixo em marca de qualidade','Esquecer pós-venda'],practicePrompt:'Crie uma mensagem de lançamento coerente com saúde, confiança e atendimento personalizado.'},
+ {moduleId:'operacao',examAngles:['Capacidade operacional','Processo e qualidade','Papéis, governança e treinamento'],answerFormula:'Conecte promessa a rotina: entrada, execução, controle, responsável e indicador.',commonTraps:['Vender acima da capacidade','Achar que boa vontade substitui processo','Não distinguir decisão operacional e societária'],practicePrompt:'Descreva o processo mínimo seguro para um dia de creche no PET FELIZ.'},
+ {moduleId:'financas',examAngles:['Lucratividade, rentabilidade e payback','Fluxo de caixa','Ponto de equilíbrio e margem'],answerFormula:'Diga o que cada indicador mede, cite os números do caso e explique que viabilidade depende das premissas operacionais.',commonTraps:['Confundir percentual sobre receita com investimento','Achar que venda alta é caixa alto','Esquecer capital de giro'],practicePrompt:'Explique por que o PET FELIZ pode vender mais e mesmo assim sentir aperto de caixa.'},
+ {moduleId:'riscos',examAngles:['SWOT interna e externa','Cenários','Prevenção e resposta'],answerFormula:'Classifique corretamente o fator, estime efeito e proponha ação com sinal de monitoramento.',commonTraps:['Chamar oportunidade de força','Apenas listar riscos','Não criar resposta prática'],practicePrompt:'Classifique entrada de concorrente maior e crie prevenção, sinal de alerta e resposta.'},
+ {moduleId:'integracao',examAngles:['Coerência entre blocos','Trade-offs','Causa e consequência'],answerFormula:'Mostre a cadeia cliente → valor → operação → custo → receita → retorno e aponte onde a decisão fortalece ou quebra a cadeia.',commonTraps:['Analisar área isolada','Escolher tudo ao mesmo tempo','Cortar qualidade para melhorar margem no curto prazo'],practicePrompt:'Analise se cortar treinamento combina com a proposta de qualidade do PET FELIZ.'},
+ {moduleId:'prova',examAngles:['Conceitos confundíveis','Estratégia de revisão','Justificativa da alternativa correta'],answerFormula:'Compare pares conceituais, aplique ao caso e explique por que as alternativas erradas seduzem.',commonTraps:['Reler passivamente','Escolher por palavra parecida','Não revisar erro logo depois'],practicePrompt:'Explique a diferença entre lucratividade, rentabilidade e payback em três frases.'},
+ {moduleId:'modelo',examAngles:['Nove blocos do Canvas','Hipóteses e validação','Coerência entre proposta e recursos'],answerFormula:'Escolha uma oferta, posicione-a no Canvas e mostre quais recursos, atividades, parceiros, custos e receitas ela exige.',commonTraps:['Tratar Canvas como desenho bonito','Não validar hipótese','Esquecer estrutura de custos'],practicePrompt:'Monte o Canvas resumido de um plano mensal de creche.'},
+ {moduleId:'precificacao',examAngles:['Preço x custo x valor','Margem de contribuição','Ponto de equilíbrio'],answerFormula:'Separe custo fixo, variável, preço e valor percebido; depois explique o efeito no volume mínimo necessário.',commonTraps:['Precificar só pelo concorrente','Confundir receita com lucro','Ignorar mix de serviços'],practicePrompt:'Demonstre por que um serviço popular pode não contribuir para o resultado.'},
+ {moduleId:'pessoas',examAngles:['Funções e responsabilidades','Cultura e liderança','Comunicação de conflitos'],answerFormula:'Mostre como comportamento da equipe entrega a marca e proponha treinamento, padrão e feedback.',commonTraps:['Atribuir tudo à personalidade','Não definir responsabilidade','Ignorar registro de reclamações'],practicePrompt:'Crie uma rotina simples de treinamento para atendimento personalizado.'},
+ {moduleId:'etica',examAngles:['Bem-estar animal','Transparência com cliente','Sustentabilidade e privacidade'],answerFormula:'Identifique afetados, risco, valor envolvido e decisão que preserve confiança no longo prazo.',commonTraps:['Trocar segurança por receita','Fazer sustentabilidade só como propaganda','Coletar dados sem finalidade'],practicePrompt:'Explique por que recusar uma hospedagem acima da capacidade pode ser boa gestão.'},
+ {moduleId:'indicadores',examAngles:['Indicador x meta x iniciativa','Painel equilibrado','Ciclo de melhoria'],answerFormula:'Defina a métrica, meta, fonte, frequência, responsável e ação caso saia do esperado.',commonTraps:['Medir só faturamento','Usar indicador sem decisão','Não investigar causa'],practicePrompt:'Crie quatro indicadores para acompanhar a creche do PET FELIZ.'},
+ {moduleId:'laboratorio',examAngles:['Caso integrado','Resposta discursiva','Prioridade e trade-off'],answerFormula:'Responda em cinco movimentos: conceito, evidência, impacto, decisão e controle.',commonTraps:['Dar opinião solta','Copiar enunciado','Escolher ação sem critério'],practicePrompt:'Escreva uma resposta de prova sobre crescimento com reclamações e caixa apertado.'}
+]
 
 export const modules:Module[]=[
 {

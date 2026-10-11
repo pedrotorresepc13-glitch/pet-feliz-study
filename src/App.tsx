@@ -4,7 +4,7 @@ import {
   ChevronRight,CircleAlert,Compass,GraduationCap,Home,Layers3,Lightbulb,
   RefreshCcw,RotateCcw,Sparkles,Target,Trophy,Users,WalletCards
 } from 'lucide-react'
-import {modules,decisions,references,type Lesson,type Module,type Question} from './data'
+import {modules,decisions,references,caseDossier,studyIntensivePlan,moduleCoaching,type Lesson,type Module,type Question} from './data'
 
 type Screen='home'|'module'|'simulation'|'review'|'exam'|'references'
 type Metrics={estrategia:number;cliente:number;marca:number;operacao:number;financas:number}
@@ -233,6 +233,42 @@ function HomeScreen({state,progress,prosperity,nextModule,openModule,startExam}:
       <Stat icon={<RefreshCcw/>} label="Sequência" value={state.streak+' dias'} hint="Consistência de estudo"/>
     </section>
 
+    <section className="professor-method">
+      <div className="method-copy">
+        <span className="eyebrow"><GraduationCap size={14}/> MÉTODO DE ESTUDO POR CASO</span>
+        <h2>O PET FELIZ vira uma empresa viva: você estuda, decide, justifica e revisa como em uma prova aplicada.</h2>
+        <p>A plataforma agora trabalha em três camadas: dados originais do caso, aprofundamento gerencial e treino de resposta. A meta não é decorar tela; é conseguir explicar causa, consequência e decisão.</p>
+      </div>
+      <div className="rubric-card">
+        <span>RESPOSTA NOTA ALTA</span>
+        <ol>
+          <li>Definir o conceito pedido.</li>
+          <li>Trazer evidência do PET FELIZ.</li>
+          <li>Explicar impacto no negócio.</li>
+          <li>Recomendar ação e controle.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section className="dossier-grid">
+      {caseDossier.map(item=><article key={item.title}>
+        <span>{item.title}</span>
+        <strong>{item.value}</strong>
+        <p>{item.note}</p>
+      </article>)}
+    </section>
+
+    <section className="section-head">
+      <div><span className="eyebrow">PLANO INTENSIVO</span><h2>Uma rota de 30 horas para sair do resumo cru e chegar em domínio de prova.</h2></div>
+    </section>
+    <div className="intensive-plan">
+      {studyIntensivePlan.map(block=><article key={block.title}>
+        <div><span>{block.time}</span><strong>{block.title}</strong></div>
+        <p>{block.focus}</p>
+        <small>{block.deliverable}</small>
+      </article>)}
+    </div>
+
     <section className="section-head">
       <div><span className="eyebrow">ROTEIRO DE APRENDIZAGEM</span><h2>Uma trilha que começa pelo básico e termina na integração do negócio.</h2></div>
     </section>
@@ -269,6 +305,7 @@ function Stat({icon,label,value,hint}:{icon:ReactNode;label:string;value:string;
 
 function StudyScreen({module,lessonIndex,state,next,prev,back}:{module:Module;lessonIndex:number;state:Stored;next:()=>void;prev:()=>void;back:()=>void}){
   const lesson=module.lessons[lessonIndex]
+  const coaching=moduleCoaching.find(x=>x.moduleId===module.id)
   const pct=Math.round((lessonIndex/module.lessons.length)*100)
   return <div className="study-layout">
     <aside className="study-outline">
@@ -306,6 +343,31 @@ function StudyScreen({module,lessonIndex,state,next,prev,back}:{module:Module;le
       {lesson.example&&<div className="example-box"><div className="example-icon"><Lightbulb/></div><div><span>{lesson.exampleTitle||'Exemplo'}</span><p>{lesson.example}</p></div></div>}
 
       <div className="takeaway"><Compass/><div><span>IDEIA PARA LEVAR</span><strong>{lesson.keyTakeaway}</strong></div></div>
+
+      {coaching&&<section className="professor-panel">
+        <div className="professor-head">
+          <span className="eyebrow"><GraduationCap size={14}/> COMO O PROFESSOR PODE COBRAR</span>
+          <h2>Transforme esta aula em resposta aplicada.</h2>
+        </div>
+        <div className="coaching-grid">
+          <article>
+            <span>Ângulos de prova</span>
+            {coaching.examAngles.map(x=><p key={x}><CheckCircle2 size={14}/>{x}</p>)}
+          </article>
+          <article>
+            <span>Fórmula de resposta</span>
+            <strong>{coaching.answerFormula}</strong>
+          </article>
+          <article>
+            <span>Erros que derrubam nota</span>
+            {coaching.commonTraps.map(x=><p key={x}><CircleAlert size={14}/>{x}</p>)}
+          </article>
+        </div>
+        <div className="practice-prompt">
+          <Lightbulb size={18}/>
+          <div><span>TREINO DISCURSIVO</span><strong>{coaching.practicePrompt}</strong></div>
+        </div>
+      </section>}
 
       <div className="study-actions">
         <button className="ghost-btn" disabled={lessonIndex===0} onClick={prev}><ArrowLeft size={17}/> Aula anterior</button>

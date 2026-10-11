@@ -143,6 +143,34 @@ nav{display:grid;gap:7px}
 .stat-icon{width:42px;height:42px;border-radius:12px;background:#10283a;display:grid;place-items:center;color:var(--accent);flex:none}
 .stat span,.stat small{display:block;color:var(--muted);font-size:10px}.stat strong{display:block;font:800 25px Manrope;margin:2px 0}
 
+.professor-method{
+  display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:18px;margin-top:18px;
+  border:1px solid #214158;border-radius:20px;padding:24px;
+  background:linear-gradient(135deg,rgba(11,28,44,.92),rgba(9,22,34,.78))
+}
+.method-copy h2{font:800 30px/1.18 Manrope;letter-spacing:-.025em;margin:11px 0 10px;max-width:930px}
+.method-copy p{color:#9fb4c4;line-height:1.65;margin:0;max-width:850px}
+.rubric-card{border:1px solid #2d5266;border-radius:16px;background:#0d2132;padding:18px}
+.rubric-card>span,.dossier-grid span,.intensive-plan span,.coaching-grid span,.practice-prompt span{
+  display:block;color:var(--accent);font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase
+}
+.rubric-card ol{margin:12px 0 0;padding-left:20px;color:#c5d5e1;font-size:12px;line-height:1.85}
+
+.dossier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.dossier-grid article{
+  min-height:152px;border:1px solid var(--line-soft);border-radius:16px;background:#0b1928;padding:18px
+}
+.dossier-grid strong{display:block;font:800 18px/1.3 Manrope;margin:10px 0;color:#f3f9ff}
+.dossier-grid p{margin:0;color:#8fa6b9;font-size:12px;line-height:1.55}
+
+.intensive-plan{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.intensive-plan article{
+  border:1px solid #20394d;border-radius:16px;background:#0b1928;padding:16px;min-height:180px
+}
+.intensive-plan strong{display:block;font:800 14px/1.35 Manrope;margin-top:7px}
+.intensive-plan p{color:#9db1c1;font-size:12px;line-height:1.55;margin:14px 0 12px}
+.intensive-plan small{color:#6f879b;font-size:10px;line-height:1.45;display:block}
+
 .section-head{display:flex;justify-content:space-between;align-items:end;margin:58px 0 18px}
 .section-head h2,.ref-title{font:800 28px/1.25 Manrope;max-width:850px;margin:8px 0 0;letter-spacing:-.025em}
 
@@ -237,6 +265,22 @@ nav{display:grid;gap:7px}
 .example-box{background:#172516;border:1px solid #395c37}.example-icon{width:38px;height:38px;border-radius:11px;background:#243b22;display:grid;place-items:center;color:#f1d276;flex:none}
 .example-box span,.takeaway span{font-size:9px;letter-spacing:.12em;font-weight:800;color:#8ea4b5}.example-box p{margin:6px 0 0;color:#c4d2bc;line-height:1.62;font-size:13px}
 .takeaway{background:#0c2827;border:1px solid #29605a;align-items:center}.takeaway svg{color:var(--accent);flex:none}.takeaway strong{display:block;font:700 15px/1.5 Manrope;margin-top:4px;color:#c9efe5}
+.professor-panel{
+  margin:32px 0;border:1px solid #27465d;border-radius:20px;background:#0b1928;padding:22px
+}
+.professor-head h2{font:800 24px/1.25 Manrope;margin:9px 0 18px;letter-spacing:-.02em}
+.coaching-grid{display:grid;grid-template-columns:1fr 1.1fr 1fr;gap:12px}
+.coaching-grid article{
+  border:1px solid var(--line-soft);border-radius:14px;background:#0e2031;padding:16px
+}
+.coaching-grid p{display:flex;gap:8px;align-items:flex-start;margin:11px 0 0;color:#a8bac8;font-size:12px;line-height:1.45}
+.coaching-grid p svg{color:var(--accent);flex:none;margin-top:1px}
+.coaching-grid article:nth-child(3) p svg{color:var(--danger)}
+.coaching-grid strong{display:block;color:#d8e8f4;font:700 13px/1.6 Manrope;margin-top:11px}
+.practice-prompt{
+  margin-top:12px;display:flex;gap:12px;align-items:flex-start;border:1px solid #365d3d;border-radius:14px;background:#142315;padding:15px
+}
+.practice-prompt svg{color:var(--warm);flex:none}.practice-prompt strong{display:block;margin-top:5px;color:#d8e8c6;font:700 14px/1.5 Manrope}
 .study-actions{display:flex;justify-content:space-between;gap:12px;margin-top:38px;padding-top:22px;border-top:1px solid var(--line-soft)}
 .already-mastered{margin-top:16px;display:flex;align-items:center;gap:8px;color:#86b8aa;font-size:10px}.already-mastered svg{width:15px}
 
@@ -275,6 +319,8 @@ nav{display:grid;gap:7px}
   .app-shell{grid-template-columns:220px minmax(0,1fr)}
   .study-promise{grid-template-columns:repeat(2,1fr)}
   .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .dossier-grid{grid-template-columns:repeat(2,1fr)}
+  .intensive-plan{grid-template-columns:repeat(3,1fr)}
   .study-layout{grid-template-columns:235px minmax(0,1fr);gap:28px}
   .customer-map{grid-template-columns:1fr 1fr}.customer-map .persona-dot{grid-row:span 2}
 }
@@ -282,13 +328,17 @@ nav{display:grid;gap:7px}
   .app-shell{display:block}.sidebar{position:relative;height:auto;border-right:0;border-bottom:1px solid var(--line-soft);flex-direction:row;align-items:center;gap:16px;padding:14px 18px}
   .brand{padding:0}.sidebar nav{display:flex;flex:1;justify-content:flex-end}.nav{padding:9px 11px}.nav span{display:none}.side-foot{display:none}
   .main{padding:30px 20px 70px}.welcome-card{grid-template-columns:1fr}.business-health{border-left:0;border-top:1px solid #244157;padding:24px 0 0}
+  .professor-method{grid-template-columns:1fr}
+  .coaching-grid{grid-template-columns:1fr}
+  .intensive-plan{grid-template-columns:repeat(2,1fr)}
   .study-layout{display:block}.study-outline{position:relative;top:auto;border-right:0;min-height:0;padding:0;margin-bottom:28px}.outline-lessons,.outline-goals{display:none}.outline-head{display:grid;grid-template-columns:1fr auto;column-gap:15px}.outline-head h3{grid-column:1/3}.outline-progress{grid-column:1/2}
   .assessment-head,.sim-head,.exam-top{align-items:flex-start;flex-direction:column}.assessment-score,.sim-index{align-self:stretch;display:flex;justify-content:space-between;align-items:center;text-align:left}.assessment-score strong,.sim-index strong{margin:0}
   .metrics{grid-template-columns:repeat(3,1fr)}
 }
 @media(max-width:650px){
   .sidebar{overflow:auto}.brand-copy{display:none}.welcome-card{padding:22px;border-radius:20px}.welcome-copy h1{font-size:39px}
-  .study-promise,.stats-grid,.method-grid,.result-grid,.mvv-grid,.finance-grid,.concept-list{grid-template-columns:1fr}
+  .study-promise,.stats-grid,.method-grid,.result-grid,.mvv-grid,.finance-grid,.concept-list,.dossier-grid,.intensive-plan{grid-template-columns:1fr}
+  .professor-method{padding:18px}.method-copy h2{font-size:24px}.dossier-grid article,.intensive-plan article{min-height:auto}
   .roadmap-row{grid-template-columns:38px 1fr}.roadmap-card{align-items:flex-start;flex-direction:column}.roadmap-card>button{width:100%}
   .study-content h1{font-size:40px}.lesson-intro{font-size:17px}.reading>p{font-size:15px;line-height:1.8}
   .lesson-top{align-items:flex-start;gap:12px}.study-actions{flex-direction:column-reverse}.study-actions button{width:100%}
