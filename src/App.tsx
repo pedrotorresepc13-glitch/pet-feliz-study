@@ -4,7 +4,7 @@ import {
   ChevronRight,CircleAlert,Compass,GraduationCap,Home,Layers3,Lightbulb,
   RefreshCcw,RotateCcw,Sparkles,Target,Trophy,Users,WalletCards
 } from 'lucide-react'
-import {modules,decisions,references,caseDossier,studyIntensivePlan,moduleCoaching,type Lesson,type Module,type Question} from './data'
+import {modules,decisions,references,caseDossier,studyIntensivePlan,moduleCoaching,professorSystemSteps,capstoneDeliverables,type Lesson,type Module,type Question} from './data'
 
 type Screen='home'|'module'|'simulation'|'review'|'exam'|'references'
 type Metrics={estrategia:number;cliente:number;marca:number;operacao:number;financas:number}
@@ -153,7 +153,18 @@ export default function App(){
 
     <main className="main">
       {screen==='home'&&<HomeScreen state={state} progress={progress} prosperity={prosperity} nextModule={nextModule} openModule={openModule} startExam={startExam}/>}
-      {screen==='module'&&!quizMode&&<StudyScreen module={active} lessonIndex={lessonIndex} state={state} next={nextLesson} prev={()=>setLessonIndex(i=>Math.max(0,i-1))} back={()=>setScreen('home')}/>}
+      {screen==='module'&&!quizMode&&<StudyScreen module={active} lessonIndex={lessonIndex} state={state} next={nextLesson}
+        prev={()=>{
+          const n=Math.max(0,lessonIndex-1)
+          setLessonIndex(n)
+          setState(s=>({...s,moduleStep:{...s.moduleStep,[active.id]:n}}))
+        }}
+        goToLesson={(n)=>{
+          setLessonIndex(n)
+          setState(s=>({...s,moduleStep:{...s.moduleStep,[active.id]:n}}))
+          window.scrollTo({top:0,behavior:'smooth'})
+        }}
+        back={()=>setScreen('home')}/>}
       {screen==='module'&&quizMode&&<QuizScreen module={active} quizIndex={quizIndex} quizCorrect={quizCorrect} selected={selected} answered={answered}
         setSelected={setSelected}
         answer={()=>{
@@ -235,9 +246,9 @@ function HomeScreen({state,progress,prosperity,nextModule,openModule,startExam}:
 
     <section className="professor-method">
       <div className="method-copy">
-        <span className="eyebrow"><GraduationCap size={14}/> MÉTODO DE ESTUDO POR CASO</span>
-        <h2>O PET FELIZ vira uma empresa viva: você estuda, decide, justifica e revisa como em uma prova aplicada.</h2>
-        <p>A plataforma agora trabalha em três camadas: dados originais do caso, aprofundamento gerencial e treino de resposta. A meta não é decorar tela; é conseguir explicar causa, consequência e decisão.</p>
+        <span className="eyebrow"><GraduationCap size={14}/> SISTEMA-PROFESSOR</span>
+        <h2>O app assume o papel do professor: ensina, cobra, corrige, aplica e faz você revisar.</h2>
+        <p>A plataforma trabalha em três camadas: dados originais do caso, aprofundamento gerencial e treino de resposta. A meta não é decorar tela; é conseguir explicar causa, consequência e decisão.</p>
       </div>
       <div className="rubric-card">
         <span>RESPOSTA NOTA ALTA</span>
@@ -250,6 +261,13 @@ function HomeScreen({state,progress,prosperity,nextModule,openModule,startExam}:
       </div>
     </section>
 
+    <section className="teacher-system-grid">
+      {professorSystemSteps.map(step=><article key={step.title}>
+        <span>{step.title}</span>
+        <p>{step.detail}</p>
+      </article>)}
+    </section>
+
     <section className="dossier-grid">
       {caseDossier.map(item=><article key={item.title}>
         <span>{item.title}</span>
@@ -259,13 +277,25 @@ function HomeScreen({state,progress,prosperity,nextModule,openModule,startExam}:
     </section>
 
     <section className="section-head">
-      <div><span className="eyebrow">PLANO INTENSIVO</span><h2>Uma rota de 30 horas para sair do resumo cru e chegar em domínio de prova.</h2></div>
+      <div><span className="eyebrow">PLANO INTENSIVO</span><h2>Uma rota de 60 horas para sair do resumo cru e chegar em domínio de prova.</h2></div>
     </section>
     <div className="intensive-plan">
       {studyIntensivePlan.map(block=><article key={block.title}>
         <div><span>{block.time}</span><strong>{block.title}</strong></div>
         <p>{block.focus}</p>
         <small>{block.deliverable}</small>
+      </article>)}
+    </div>
+
+    <section className="section-head">
+      <div><span className="eyebrow">PROJETO FINAL</span><h2>O fechamento do curso é uma mini banca: defender o PET FELIZ com evidência, decisão e controle.</h2></div>
+    </section>
+    <div className="capstone-grid">
+      {capstoneDeliverables.map((item,i)=><article key={item.title}>
+        <b>{String(i+1).padStart(2,'0')}</b>
+        <h3>{item.title}</h3>
+        <p>{item.detail}</p>
+        <small>{item.proof}</small>
       </article>)}
     </div>
 
@@ -303,7 +333,7 @@ function Stat({icon,label,value,hint}:{icon:ReactNode;label:string;value:string;
   return <div className="stat"><div className="stat-icon">{icon}</div><div><span>{label}</span><strong>{value}</strong><small>{hint}</small></div></div>
 }
 
-function StudyScreen({module,lessonIndex,state,next,prev,back}:{module:Module;lessonIndex:number;state:Stored;next:()=>void;prev:()=>void;back:()=>void}){
+function StudyScreen({module,lessonIndex,state,next,prev,goToLesson,back}:{module:Module;lessonIndex:number;state:Stored;next:()=>void;prev:()=>void;goToLesson:(n:number)=>void;back:()=>void}){
   const lesson=module.lessons[lessonIndex]
   const coaching=moduleCoaching.find(x=>x.moduleId===module.id)
   const pct=Math.round((lessonIndex/module.lessons.length)*100)
@@ -317,7 +347,7 @@ function StudyScreen({module,lessonIndex,state,next,prev,back}:{module:Module;le
         <small>{lessonIndex+1} de {module.lessons.length} aulas</small>
       </div>
       <div className="outline-lessons">
-        {module.lessons.map((l,i)=><button key={l.id} className={(i===lessonIndex?'active ':'')+(i<lessonIndex?'done':'')} onClick={()=>i<=lessonIndex&&undefined}>
+        {module.lessons.map((l,i)=><button key={l.id} className={(i===lessonIndex?'active ':'')+(i<lessonIndex?'done':'')} onClick={()=>goToLesson(i)}>
           <span>{i<lessonIndex?<CheckCircle2 size={15}/>:i+1}</span><div><strong>{l.title}</strong><small>{l.kicker}</small></div>
         </button>)}
       </div>
@@ -346,7 +376,7 @@ function StudyScreen({module,lessonIndex,state,next,prev,back}:{module:Module;le
 
       {coaching&&<section className="professor-panel">
         <div className="professor-head">
-          <span className="eyebrow"><GraduationCap size={14}/> COMO O PROFESSOR PODE COBRAR</span>
+          <span className="eyebrow"><GraduationCap size={14}/> COMO O SISTEMA-PROFESSOR VAI COBRAR</span>
           <h2>Transforme esta aula em resposta aplicada.</h2>
         </div>
         <div className="coaching-grid">
@@ -400,7 +430,7 @@ function QuizScreen({module,quizIndex,quizCorrect,selected,answered,setSelected,
   const question=module.questions[quizIndex]
   return <div className="assessment-page">
     <div className="assessment-head">
-      <div><span className="eyebrow">VERIFICAÇÃO DE APRENDIZAGEM</span><h1>Agora prove que entendeu.</h1><p>Seu professor está verificando se você consegue explicar a decisão: use os conceitos estudados e justifique mentalmente cada resposta.</p></div>
+      <div><span className="eyebrow">VERIFICAÇÃO DE APRENDIZAGEM</span><h1>Agora prove que entendeu.</h1><p>O sistema-professor está verificando se você consegue explicar a decisão: use os conceitos estudados e justifique mentalmente cada resposta.</p></div>
       <div className="assessment-score"><span>ACERTOS</span><strong>{quizCorrect}/{module.questions.length}</strong></div>
     </div>
     <div className="exam-progress"><i style={{width:((quizIndex+1)/module.questions.length*100)+'%'}}/></div>

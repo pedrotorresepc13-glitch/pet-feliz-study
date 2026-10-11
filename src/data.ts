@@ -54,6 +54,17 @@ export type StudyPlanBlock={
   deliverable:string
 }
 
+export type ProfessorSystemStep={
+  title:string
+  detail:string
+}
+
+export type CapstoneDeliverable={
+  title:string
+  detail:string
+  proof:string
+}
+
 export type ModuleCoaching={
   moduleId:string
   examAngles:string[]
@@ -74,11 +85,27 @@ export const caseDossier:CaseDossierItem[]=[
 ]
 
 export const studyIntensivePlan:StudyPlanBlock[]=[
- {title:'1. Entender o caso',time:'4h',focus:'Ler dossiê, missão, visão, valores, cliente, mercado e números sem misturar fato com hipótese.',deliverable:'Mapa do caso em uma página.'},
- {title:'2. Dominar conceitos',time:'8h',focus:'Plano de negócios, segmentação, Porter, proposta de valor, 4 Ps, operação, finanças, SWOT e Canvas.',deliverable:'Glossário comparativo dos conceitos que mais confundem.'},
- {title:'3. Aplicar no PET FELIZ',time:'8h',focus:'Responder cada conceito usando evidências do caso e consequências gerenciais.',deliverable:'18 respostas discursivas curtas, uma por módulo.'},
- {title:'4. Simular prova',time:'6h',focus:'Fazer questões misturadas, revisar erros e treinar justificativa antes de olhar resposta.',deliverable:'Lista dos erros recorrentes e correção explicada.'},
- {title:'5. Revisão final',time:'4h',focus:'Revisar números, diferenças conceituais, riscos e cadeias de causa e efeito.',deliverable:'Resposta modelo: conceito, evidência, impacto, recomendação e controle.'}
+ {title:'1. Imersão no caso',time:'6h',focus:'Ler dossiê, missão, visão, valores, cliente, mercado e números sem misturar fato com hipótese.',deliverable:'Mapa do caso em uma página.'},
+ {title:'2. Fundamentos gerenciais',time:'12h',focus:'Plano de negócios, segmentação, Porter, proposta de valor, 4 Ps, operação, finanças, SWOT e Canvas.',deliverable:'Glossário comparativo dos conceitos que mais confundem.'},
+ {title:'3. Aplicação guiada',time:'14h',focus:'Responder cada conceito usando evidências do caso e consequências gerenciais.',deliverable:'18 respostas discursivas curtas, uma por módulo.'},
+ {title:'4. Laboratório de decisões',time:'10h',focus:'Tomar decisões simuladas e justificar trade-offs entre cliente, operação, marca e finanças.',deliverable:'Diário de decisões: escolha, impacto, risco e controle.'},
+ {title:'5. Simulados e revisão',time:'10h',focus:'Fazer questões misturadas, revisar erros e treinar justificativa antes de olhar resposta.',deliverable:'Lista dos erros recorrentes e correção explicada.'},
+ {title:'6. Projeto final',time:'8h',focus:'Montar uma defesa completa do plano PET FELIZ, conectando estratégia, operação e viabilidade.',deliverable:'Mini banca: diagnóstico, decisão recomendada, riscos e indicadores.'}
+]
+
+export const professorSystemSteps:ProfessorSystemStep[]=[
+ {title:'Diagnostica',detail:'Mostra progresso, erros, melhor simulado, domínio por módulo e pontos vencidos para revisão.'},
+ {title:'Ensina',detail:'Apresenta o conteúdo em camadas: dado original do caso, aprofundamento e visualização do conceito.'},
+ {title:'Cobra',detail:'Depois da explicação, exige resposta objetiva e mostra por que a alternativa certa é melhor.'},
+ {title:'Aplica',detail:'Transforma cada módulo em decisão gerencial com impacto no índice do PET FELIZ.'},
+ {title:'Revisa',detail:'Erros voltam primeiro e acertos reaparecem em intervalos, para testar memória de verdade.'}
+]
+
+export const capstoneDeliverables:CapstoneDeliverable[]=[
+ {title:'Diagnóstico estratégico',detail:'Quem é o cliente, qual dor o PET FELIZ resolve e quais forças externas pressionam o negócio.',proof:'Usar dossiê, segmentação, concorrência e Porter.'},
+ {title:'Modelo de operação',detail:'Como a promessa de qualidade vira processo, capacidade, equipe, higiene, segurança e governança.',proof:'Usar valores, operação, pessoas e indicadores.'},
+ {title:'Defesa financeira',detail:'Como investimento, lucratividade, rentabilidade, payback, preço e margem sustentam a decisão.',proof:'Comparar número do caso com premissas e riscos.'},
+ {title:'Plano de controle',detail:'Quais metas e indicadores dirão se o negócio está melhorando ou fugindo do planejado.',proof:'Definir métrica, fonte, frequência, responsável e ação corretiva.'}
 ]
 
 export const moduleCoaching:ModuleCoaching[]=[
@@ -508,7 +535,7 @@ export const modules:Module[]=[
     'Trade-off não é necessariamente problema; é a consequência de priorizar uma direção estratégica.'
    ],
    keyTakeaway:'Estratégia exige prioridade; tentar maximizar tudo ao mesmo tempo costuma gerar incoerência.',visual:'integration'},
-  {id:'g3',title:'Leia o caso como professor leria',kicker:'PREPARAÇÃO PARA PROVA',source:'aprofundamento',
+  {id:'g3',title:'Leia o caso como o sistema-professor cobraria',kicker:'PREPARAÇÃO PARA PROVA',source:'aprofundamento',
    intro:'Em prova, o mais importante é reconhecer relações entre os conceitos.',
    paragraphs:[
     'Missão se conecta a propósito atual. Visão a futuro. Valores a comportamento. Segmentação define público. Porter analisa estrutura competitiva. Valor agregado conecta utilidade, preço e custo.',
@@ -564,7 +591,7 @@ export const modules:Module[]=[
 ,{
  id:'modelo',order:13,title:'Modelo de Negócio e Canvas',subtitle:'Transforme o plano em uma visão das escolhas que sustentam o negócio.',description:'Conecte clientes, proposta, canais, receitas, recursos, atividades, parceiros e custos em um modelo coerente.',masteryTarget:80,outcomes:['Ler os nove blocos do Canvas','Relacionar proposta a recursos e receitas','Encontrar incoerências no modelo'],lessons:[
  {id:'m1',title:'O Canvas como mapa de criação de valor',kicker:'APROFUNDAMENTO',source:'aprofundamento',intro:'O Business Model Canvas organiza como uma empresa cria, entrega e captura valor.',paragraphs:['Os nove blocos são segmentos de clientes, proposta de valor, canais, relacionamento, fontes de receita, recursos-chave, atividades-chave, parceiros-chave e estrutura de custos.','O Canvas não substitui o plano de negócios. Ele oferece uma visão resumida para enxergar dependências. Uma proposta de hospedagem exige espaço, equipe, regras, comunicação e cobrança.','Uma proposta excelente no papel falha quando não existem recursos para entregá-la.'],bullets:['Quem recebe valor?','Qual problema é resolvido?','Como o cliente usa a solução?','Como o negócio recebe e paga?'],keyTakeaway:'Um modelo de negócio é uma lógica conectada, não uma lista de ideias.',visual:'plan-map'},
- {id:'m2',title:'Canvas aplicado ao PET FELIZ',kicker:'APLICAÇÃO AO CASO',source:'aprofundamento',intro:'O PET FELIZ combina produtos e serviços recorrentes de cuidado.',paragraphs:['Tutores de cães e gatos formam os segmentos principais. A proposta reúne alimentação saudável, atendimento personalizado, hospedagem, creche, adestramento, pet sitter e dog walker.','Canais podem incluir loja, atendimento digital, redes sociais, indicação e parcerias locais. O relacionamento precisa reforçar confiança e conveniência.','Receitas podem vir de produtos, diárias, planos, serviços avulsos e pacotes. Cada receita precisa ser comparada com custo e capacidade.'],exampleTitle:'Pergunta de professor',example:'Se o PET FELIZ vender um plano mensal de creche, quais recursos, atividades e custos precisam aparecer no Canvas?',keyTakeaway:'Cada oferta precisa ter lugar claro no modelo e forma sustentável de entrega.',visual:'integration'},
+ {id:'m2',title:'Canvas aplicado ao PET FELIZ',kicker:'APLICAÇÃO AO CASO',source:'aprofundamento',intro:'O PET FELIZ combina produtos e serviços recorrentes de cuidado.',paragraphs:['Tutores de cães e gatos formam os segmentos principais. A proposta reúne alimentação saudável, atendimento personalizado, hospedagem, creche, adestramento, pet sitter e dog walker.','Canais podem incluir loja, atendimento digital, redes sociais, indicação e parcerias locais. O relacionamento precisa reforçar confiança e conveniência.','Receitas podem vir de produtos, diárias, planos, serviços avulsos e pacotes. Cada receita precisa ser comparada com custo e capacidade.'],exampleTitle:'Pergunta do sistema-professor',example:'Se o PET FELIZ vender um plano mensal de creche, quais recursos, atividades e custos precisam aparecer no Canvas?',keyTakeaway:'Cada oferta precisa ter lugar claro no modelo e forma sustentável de entrega.',visual:'integration'},
  {id:'m3',title:'Hipóteses do Canvas e validação',kicker:'PENSAMENTO CRÍTICO',source:'aprofundamento',intro:'Todo Canvas começa com hipóteses que precisam ser testadas.',paragraphs:['Uma hipótese é uma afirmação ainda não comprovada, como “tutores pagarão mensalmente por um pacote”. Validar é buscar evidência por entrevistas, pré-venda, teste, uso e dados de concorrentes.','Dizer que gostou é diferente de pagar, agendar ou recomendar.','Quando a evidência contradiz a hipótese, ajustar o Canvas é sinal de gestão.'],keyTakeaway:'O Canvas orienta testes; o mercado confirma ou corrige hipóteses.',visual:'journey'}
  ],questions:[
  q('q37','modelo','Qual bloco descreve como o PET FELIZ gera receita?',['Recursos-chave','Fontes de receita','Relacionamento','Parceiros-chave'],1,'Fontes de receita mostram como o negócio captura valor.'),

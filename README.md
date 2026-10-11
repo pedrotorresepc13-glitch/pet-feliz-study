@@ -10,10 +10,11 @@ Transformar o material acadêmico do PET FELIZ em uma experiência de aprendizag
 
 - 18 módulos progressivos com **54 aulas guiadas** e laboratório integrado
 - Dossiê do caso PET FELIZ com os dados essenciais para revisão rápida
-- Plano intensivo de **30 horas** para transformar resumo em domínio de prova
-- Camada “como o professor pode cobrar” em cada módulo
+- Plano intensivo de **60 horas** para transformar resumo em domínio de prova
+- Camada de **sistema-professor**: diagnostica, ensina, cobra, aplica e revisa
 - Fórmula de resposta discursiva: conceito, evidência, impacto, recomendação e controle
 - Erros comuns por módulo, para evitar confusões típicas de prova
+- Projeto final em formato de mini banca, com diagnóstico, operação, finanças e controle
 - Matéria antes das perguntas: explicações, exemplos, listas de conceitos e diagramas visuais
 - Conteúdo explicitamente marcado como **“Do material PET FELIZ”** ou **“Aprofundamento”**
 - Metas de domínio por módulo
@@ -58,7 +59,7 @@ Os módulos adicionais expandem o estudo com segmentação, posicionamento, 4 Ps
 
 ## Metodologia de aprendizagem
 
-A interface foi desenhada para funcionar como um professor: **estudar → visualizar → entender → responder → receber feedback → aplicar → revisar → integrar**. O conteúdo começa com a matéria do caso PET FELIZ, amplia os conceitos com aprofundamento e termina em situações que exigem justificativa, comparação e decisão. A metodologia usa três princípios:
+A interface foi desenhada para ser o próprio **sistema-professor**: **diagnosticar → ensinar → visualizar → cobrar → corrigir → aplicar → revisar → integrar**. O conteúdo começa com a matéria do caso PET FELIZ, amplia os conceitos com aprofundamento e termina em situações que exigem justificativa, comparação e decisão. A metodologia usa três princípios:
 
 1. **Recuperação ativa** — tentar lembrar e responder antes de reler.
 2. **Prática distribuída** — erros e conceitos antigos retornam em revisões.
